@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════════
+   MEMBER REGISTER — Royal Fitness
+═══════════════════════════════════════ */
+
+* { box-sizing: border-box; }
+
+.mrWrap {
+  min-height: 100vh;
+  background: radial-gradient(900px 420px at 20% 10%, rgba(255,40,40,0.35), transparent 60%),
+              radial-gradient(900px 520px at 80% 30%, rgba(0,153,255,0.22), transparent 60%),
+              linear-gradient(180deg, #07090f, #06070c);
+  padding: 40px 20px;
+  color: #e9eef7;
+  display: flex;
+  justify-content: center;
+}
+
+.mrContainer {
+  width: min(760px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* Header */
+.mrHeader  { text-align: center; }
+.mrBrand   { font-size: 20px; font-weight: 900; margin-bottom: 12px; cursor: pointer; }
+.mrRed     { color: #ff2d2d; }
+.mrWhite   { color: #fff; }
+.mrTitle   { font-size: 30px; font-weight: 900; color: #fff; margin: 0 0 8px; }
+.mrSub     { color: rgba(255,255,255,0.50); font-size: 14px; }
+
+/* Card */
+.mrCard     { padding: 28px; }
+.mrCardHead { margin-bottom: 20px; }
+.mrCardTitle{ font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+.mrCardSub  { font-size: 13px; color: rgba(255,255,255,0.50); }
+
+/* Form */
+.mrForm { display: flex; flex-direction: column; gap: 16px; }
+.mrGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.mrField { display: flex; flex-direction: column; gap: 6px; }
+.mrField > span { color: rgba(255,255,255,0.80); font-size: 13px; font-weight: 700; }
+
+.mrField input,
+.mrField select {
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.30);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.mrField input:focus,
+.mrField select:focus {
+  border-color: rgba(255,60,60,0.55);
+  box-shadow: 0 0 0 4px rgba(255,60,60,0.12);
+}
+
+.mrField input::placeholder { color: rgba(255,255,255,0.22); }
+.mrField select option { background: #111; }
+
+.mrInputErr { border-color: rgba(255,60,60,0.70) !important; }
+.mrFieldErr { color: #ff6b6b; font-size: 12px; font-weight: 600; }
+.mrHint     { color: rgba(255,255,255,0.30); font-size: 11px; }
+
+.mrErr {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,60,60,0.10);
+  border: 1px solid rgba(255,60,60,0.30);
+  color: #ff9999;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mrInfoBox {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(0,140,255,0.08);
+  border: 1px solid rgba(0,140,255,0.20);
+  color: rgba(255,255,255,0.65);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.mrActions  { display: flex; gap: 12px; flex-wrap: wrap; }
+.mrBtnFull  { flex: 1; }
+
+/* Buttons */
+.mrBtn {
+  height: 50px;
+  padding: 0 24px;
+  border-radius: 50px;
+  border: none;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: filter .2s, transform .2s;
+}
+
+.mrBtn:hover     { filter: brightness(1.08); transform: translateY(-1px); }
+.mrBtn:disabled  { opacity: 0.55; cursor: not-allowed; transform: none; }
+.mrBtnRed        { background: linear-gradient(135deg, #ff2d2d, #ff5555); color: #fff; box-shadow: 0 6px 24px rgba(255,45,45,0.30); }
+.mrBtnGhost      { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; }
+
+/* Success */
+.mrSuccess {
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.mrSuccessIcon  { font-size: 56px; }
+.mrSuccessTitle { font-size: 24px; font-weight: 900; color: #fff; }
+.mrSuccessSub   { color: rgba(255,255,255,0.55); font-size: 14px; }
+
+.mrMemberIdBox {
+  background: rgba(255,45,45,0.10);
+  border: 2px solid rgba(255,45,45,0.40);
+  border-radius: 18px;
+  padding: 20px 40px;
+  margin: 8px 0;
+}
+
+.mrMemberIdLabel { font-size: 13px; color: rgba(255,255,255,0.50); margin-bottom: 6px; }
+.mrMemberId      { font-size: 42px; font-weight: 900; color: #ff2d2d; letter-spacing: 4px; }
+.mrMemberIdNote  { font-size: 12px; color: rgba(255,255,255,0.40); margin-top: 8px; }
+
+.mrSuccessActions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* Responsive */
+@media (max-width: 580px) {
+  .mrGrid    { grid-template-columns: 1fr; }
+  .mrActions { flex-direction: column; }
+  .mrTitle   { font-size: 24px; }
+}

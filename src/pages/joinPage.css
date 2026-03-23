@@ -1,0 +1,201 @@
+/* ═══════════════════════════════════════
+   JOIN PAGE — Royal Fitness
+═══════════════════════════════════════ */
+
+* { box-sizing: border-box; }
+
+.jpWrap {
+  min-height: 100vh;
+  background: radial-gradient(900px 420px at 20% 10%, rgba(255,40,40,0.35), transparent 60%),
+              radial-gradient(900px 520px at 80% 30%, rgba(0,153,255,0.22), transparent 60%),
+              linear-gradient(180deg, #07090f, #06070c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #e9eef7;
+}
+
+.jpContainer {
+  width: min(900px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* Header */
+.jpHeader { text-align: center; }
+
+.jpBrand {
+  font-size: 22px; font-weight: 900;
+  margin-bottom: 14px; cursor: pointer;
+  letter-spacing: .5px;
+}
+
+.jpRed   { color: #ff2d2d; }
+.jpWhite { color: #fff; }
+
+.jpTitle { font-size: 36px; font-weight: 900; color: #fff; margin: 0 0 10px; }
+.jpSub   { color: rgba(255,255,255,0.50); font-size: 15px; margin: 0; }
+
+/* Cards */
+.jpCards {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  width: 100%;
+  align-items: start;
+}
+
+.jpCard {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.jpCardNew { border-color: rgba(255,45,45,0.25); }
+.jpCardOld { border-color: rgba(0,140,255,0.25); }
+
+.jpCardIcon  { font-size: 42px; }
+.jpCardTitle { font-size: 22px; font-weight: 900; color: #fff; margin: 0; }
+.jpCardDesc  { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; margin: 0; }
+
+.jpCardPerks {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.jpCardPerks li {
+  font-size: 14px;
+  color: rgba(255,255,255,0.70);
+  font-weight: 600;
+}
+
+/* Divider */
+.jpDivider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.jpDividerLine {
+  width: 1px;
+  height: 80px;
+  background: rgba(255,255,255,0.10);
+}
+
+.jpDividerText {
+  color: rgba(255,255,255,0.30);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* Search form */
+.jpSearchForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.jpField {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.jpField > span {
+  color: rgba(255,255,255,0.80);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.jpField input {
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.30);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.jpField input:focus {
+  border-color: rgba(0,140,255,0.55);
+  box-shadow: 0 0 0 4px rgba(0,140,255,0.12);
+}
+
+.jpField input::placeholder { color: rgba(255,255,255,0.22); font-size: 14px; letter-spacing: 0; }
+
+.jpInputErr {
+  border-color: rgba(255,60,60,0.70) !important;
+  box-shadow: 0 0 0 3px rgba(255,60,60,0.15) !important;
+}
+
+.jpErr {
+  color: #ff6b6b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Buttons */
+.jpBtn {
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: filter .2s, transform .2s;
+  width: 100%;
+}
+
+.jpBtn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.jpBtn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; filter: none; }
+
+.jpBtnRed  { background: linear-gradient(135deg, #ff2d2d, #ff5555); color: #fff; box-shadow: 0 8px 30px rgba(255,45,45,0.35); }
+.jpBtnBlue { background: linear-gradient(135deg, #0088ff, #0066cc); color: #fff; box-shadow: 0 8px 30px rgba(0,136,255,0.30); }
+
+/* Back button */
+.jpBackBtn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.50);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+
+.jpBackBtn:hover { color: #fff; border-color: rgba(255,255,255,0.30); }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .jpCards       { grid-template-columns: 1fr; }
+  .jpDivider     { flex-direction: row; padding: 10px 0; }
+  .jpDividerLine { width: 80px; height: 1px; }
+  .jpTitle       { font-size: 26px; }
+}
