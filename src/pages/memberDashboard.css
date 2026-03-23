@@ -1,0 +1,361 @@
+/* ═══════════════════════════════════════
+   MEMBER DASHBOARD — Royal Fitness
+═══════════════════════════════════════ */
+
+* { box-sizing: border-box; }
+
+.mdWrap {
+  min-height: 100vh;
+  background: radial-gradient(900px 420px at 20% 10%, rgba(255,40,40,0.35), transparent 60%),
+              radial-gradient(900px 520px at 80% 30%, rgba(0,153,255,0.22), transparent 60%),
+              linear-gradient(180deg, #07090f, #06070c);
+  padding: 28px 20px 60px;
+  color: #e9eef7;
+}
+
+.mdContainer { width: min(1100px, 100%); margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* Loading / Error */
+.mdLoading { text-align: center; padding: 80px; color: rgba(255,255,255,0.45); font-size: 16px; }
+
+.mdError {
+  width: min(400px, 100%);
+  margin: 80px auto;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.mdErrorTitle { font-size: 20px; font-weight: 800; color: #ff9999; }
+
+/* Top */
+.mdTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mdTopLeft { display: flex; align-items: center; gap: 16px; }
+
+.mdAvatar {
+  width: 64px; height: 64px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ff2d2d, #ff6b6b);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 900; color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 8px 30px rgba(255,45,45,0.30);
+}
+
+.mdName   { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.mdMeta   { display: flex; align-items: center; gap: 10px; }
+.mdBadge  { padding: 3px 10px; border-radius: 999px; background: rgba(255,45,45,0.15); border: 1px solid rgba(255,45,45,0.35); color: #ff9999; font-size: 12px; font-weight: 700; }
+.mdMemberId { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 600; }
+
+.mdTopRight { display: flex; gap: 10px; }
+
+/* Stats */
+.mdStats { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+
+.mdStat { padding: 20px; text-align: center; }
+.mdStatNum { font-size: 32px; font-weight: 900; color: #ff2d2d; margin-bottom: 6px; }
+.mdStatLbl { font-size: 13px; color: rgba(255,255,255,0.50); font-weight: 600; }
+
+/* Tabs */
+.mdTabs { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.mdTab {
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.60);
+  font-weight: 700; font-size: 14px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.mdTab:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+.mdTabActive {
+  background: rgba(255,45,45,0.15) !important;
+  border-color: rgba(255,45,45,0.40) !important;
+  color: #fff !important;
+}
+
+/* Card */
+.mdCard      { padding: 24px; }
+.mdCardTitle { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 20px; }
+
+/* Profile Grid */
+.mdProfileGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.mdProfileItem { display: flex; flex-direction: column; gap: 4px; padding: 14px; background: rgba(255,255,255,0.04); border-radius: 14px; border: 1px solid rgba(255,255,255,0.06); }
+.mdProfileLabel { font-size: 12px; color: rgba(255,255,255,0.40); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+.mdProfileVal   { font-size: 15px; color: #fff; font-weight: 600; }
+.mdHighlight    { color: #ff2d2d !important; font-size: 18px !important; font-weight: 900 !important; letter-spacing: 2px; }
+
+.mdMemberBadge  { padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; width: fit-content; }
+.mdMemberBasic    { background: rgba(100,100,100,0.20); border: 1px solid rgba(150,150,150,0.35); color: #ccc; }
+.mdMemberStandard { background: rgba(0,140,255,0.15); border: 1px solid rgba(0,140,255,0.35); color: #4db8ff; }
+.mdMemberPremium  { background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.35); color: #ffd700; }
+.mdStatusBadge    { padding: 4px 12px; border-radius: 999px; background: rgba(40,200,100,0.15); border: 1px solid rgba(40,200,100,0.35); color: #6effa8; font-size: 13px; font-weight: 700; width: fit-content; }
+
+/* Empty */
+.mdEmpty { text-align: center; padding: 40px; color: rgba(255,255,255,0.40); font-size: 14px; }
+
+/* Bookings */
+.mdBookingList { display: flex; flex-direction: column; gap: 12px; }
+
+.mdBookingCard {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mdBookingTop    { display: flex; justify-content: space-between; align-items: flex-start; }
+.mdBookingTrainer{ font-size: 16px; font-weight: 800; color: #fff; }
+.mdBookingSpec   { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+.mdBookingMeta   { display: flex; gap: 16px; font-size: 13px; color: rgba(255,255,255,0.55); }
+.mdBookingRating { display: flex; align-items: center; gap: 3px; font-size: 15px; flex-wrap: wrap; }
+.mdRatingNum     { font-size: 12px; color: rgba(255,215,0,0.80); margin-left: 4px; }
+.mdReview        { font-size: 13px; color: rgba(255,255,255,0.55); font-style: italic; margin-left: 8px; }
+
+.mdBookingBadge  { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.mdBadgeGreen    { background: rgba(40,200,100,0.15); border: 1px solid rgba(40,200,100,0.35); color: #6effa8; }
+.mdBadgeRed      { background: rgba(255,60,60,0.15);  border: 1px solid rgba(255,60,60,0.35);  color: #ff9999; }
+.mdBadgeYellow   { background: rgba(255,200,50,0.15); border: 1px solid rgba(255,200,50,0.35); color: #ffd966; }
+
+.mdRateBtn {
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 10px;
+  background: rgba(255,215,0,0.10);
+  border: 1px solid rgba(255,215,0,0.30);
+  color: #ffd700;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.mdRateBtn:hover { background: rgba(255,215,0,0.20); }
+
+/* Attendance */
+.mdAttStats { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 16px; }
+.mdAttStat  { text-align: center; padding: 16px; background: rgba(255,255,255,0.04); border-radius: 14px; border: 1px solid rgba(255,255,255,0.06); }
+.mdAttNum   { font-size: 32px; font-weight: 900; color: #ff2d2d; margin-bottom: 6px; }
+.mdAttLbl   { font-size: 13px; color: rgba(255,255,255,0.50); font-weight: 600; }
+
+.mdAttBar { height: 10px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; margin-bottom: 20px; }
+.mdAttBarFill { height: 100%; border-radius: 999px; transition: width .8s ease; }
+
+.mdAttTable { overflow-x: auto; }
+
+.mdAttTable table { width: 100%; border-collapse: collapse; }
+
+.mdAttTable th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.40);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.mdAttTable td {
+  padding: 12px 14px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.70);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.mdAttBadge  { padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.mdAttNotes  { color: rgba(255,255,255,0.40) !important; font-style: italic; }
+
+/* Attendance Mark UI */
+.mdAttDate {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 12px;
+}
+
+.mdAttMsg {
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.mdAttMsgOk {
+  background: rgba(40,200,100,0.1);
+  border: 1px solid rgba(40,200,100,0.3);
+  color: #6effa8;
+}
+
+.mdAttMsgErr {
+  background: rgba(255,60,60,0.1);
+  border: 1px solid rgba(255,60,60,0.3);
+  color: #ff9999;
+}
+
+.mdAttNoteField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 14px;
+}
+
+.mdAttNoteField > span {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 700;
+}
+
+.mdAttNoteInput {
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  padding: 0 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.mdAttNoteInput:focus {
+  border-color: rgba(0,140,255,0.45);
+  box-shadow: 0 0 0 3px rgba(0,140,255,0.12);
+}
+
+.mdAttMarkBtns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mdAttMarkBtn {
+  border-radius: 16px;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform .16s, box-shadow .16s, background .16s;
+}
+
+.mdAttMarkBtn:hover {
+  transform: translateY(-2px);
+}
+
+.mdAttMarkBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.mdAttMarkPresent {
+  border-color: rgba(40,200,100,0.35);
+  background: rgba(40,200,100,0.08);
+}
+
+.mdAttMarkPresent:hover {
+  box-shadow: 0 8px 22px rgba(40,200,100,0.2);
+}
+
+.mdAttMarkAbsent {
+  border-color: rgba(255,60,60,0.35);
+  background: rgba(255,60,60,0.08);
+}
+
+.mdAttMarkAbsent:hover {
+  box-shadow: 0 8px 22px rgba(255,60,60,0.2);
+}
+
+.mdAttMarkIcon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.mdAttMarkLabel {
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.mdAttMarkDesc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+}
+
+.mdMarkedBox {
+  margin-top: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  padding: 16px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mdMarkedIcon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.mdMarkedText {
+  font-size: 14px;
+  color: rgba(255,255,255,0.72);
+}
+
+/* Buttons */
+.mdBtn {
+  height: 44px; padding: 0 20px;
+  border-radius: 50px; border: none;
+  font-size: 14px; font-weight: 800;
+  cursor: pointer;
+  transition: filter .2s, transform .2s;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+.mdBtn:hover    { filter: brightness(1.08); transform: translateY(-1px); }
+.mdBtnRed       { background: linear-gradient(135deg, #ff2d2d, #ff5555); color: #fff; box-shadow: 0 6px 24px rgba(255,45,45,0.30); }
+.mdBtnGhost     { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .mdStats       { grid-template-columns: repeat(2,1fr); }
+  .mdAttStats    { grid-template-columns: repeat(2,1fr); }
+  .mdAttMarkBtns { grid-template-columns: 1fr; }
+  .mdProfileGrid { grid-template-columns: 1fr; }
+  .mdTop         { flex-direction: column; align-items: flex-start; }
+}

@@ -1,0 +1,493 @@
+/* ═══════════════════════════════════════
+   TRAINERS PAGE — Royal Fitness
+═══════════════════════════════════════ */
+
+* { box-sizing: border-box; }
+
+.tpWrap {
+  min-height: 100vh;
+  background: radial-gradient(900px 420px at 20% 10%, rgba(255,40,40,0.35), transparent 60%),
+              radial-gradient(900px 520px at 80% 30%, rgba(0,153,255,0.22), transparent 60%),
+              linear-gradient(180deg, #07090f, #06070c);
+  padding: 28px 0 60px;
+  color: #e9eef7;
+}
+
+.container { width: min(1200px, 92%); margin: 0 auto; }
+
+/* ── Glass ── */
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* ── Top ── */
+.tpTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 14px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.tpTitle {
+  color: #fff;
+  font-weight: 900;
+  font-size: 32px;
+}
+
+.tpNav { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ── Filters ── */
+.tpFilters {
+  padding: 14px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tpSearch {
+  flex: 1;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.30);
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.tpSearch:focus {
+  border-color: rgba(255,60,60,0.55);
+  box-shadow: 0 0 0 4px rgba(255,60,60,0.12);
+}
+
+.tpSearch::placeholder { color: rgba(255,255,255,0.30); }
+
+.tpCheck {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+  user-select: none;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.tpCheck input { width: 16px; height: 16px; cursor: pointer; }
+
+/* ── Loading / Empty ── */
+.tpLoading {
+  text-align: center;
+  padding: 40px;
+  color: rgba(255,255,255,0.45);
+  font-size: 15px;
+}
+
+.tpEmpty {
+  text-align: center;
+  padding: 60px 20px;
+  color: rgba(255,255,255,0.45);
+  font-size: 15px;
+}
+
+.tpEmptyIcon { font-size: 48px; margin-bottom: 12px; }
+
+/* ── Trainer Cards Grid ── */
+.tpCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+/* ── Single Card ── */
+.tpCard {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tpCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.55);
+}
+
+/* ── Card Top ── */
+.tpCardTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tpCardAvatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ff2d2d, #ff6b6b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.tpCardInfo { flex: 1; }
+
+.tpCardName {
+  font-size: 17px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.tpCardSpec {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 600;
+}
+
+/* ── Available badge ── */
+.tpAvailBadge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tpAvailYes {
+  background: rgba(40,200,100,0.15);
+  border: 1px solid rgba(40,200,100,0.35);
+  color: #6effa8;
+}
+
+.tpAvailNo {
+  background: rgba(255,60,60,0.15);
+  border: 1px solid rgba(255,60,60,0.35);
+  color: #ff9999;
+}
+
+/* ── Rating ── */
+.tpCardRating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(255,215,0,0.06);
+  border: 1px solid rgba(255,215,0,0.12);
+}
+
+.tpCardRatingNum {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffd700;
+  margin-left: 6px;
+}
+
+.tpCardRatingCount {
+  font-size: 12px;
+  color: rgba(255,255,255,0.40);
+  margin-left: 4px;
+}
+
+.tpNoRating {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  font-style: italic;
+}
+
+/* ── Details ── */
+.tpCardDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tpCardDetail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.70);
+}
+
+.tpDetailIcon { font-size: 14px; width: 20px; text-align: center; }
+
+/* ── Card Actions ── */
+.tpCardActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.tpBookBtn {
+  flex: 1;
+  height: 42px;
+  font-size: 14px;
+}
+
+.tpHistoryBtn {
+  height: 42px;
+  padding: 0 14px;
+  font-size: 13px;
+  background: rgba(150,80,255,0.12);
+  border: 1px solid rgba(150,80,255,0.30);
+  color: #c9a8ff;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.2s;
+}
+
+.tpHistoryBtn:hover { background: rgba(150,80,255,0.22); }
+
+/* ── Footer ── */
+.tpFoot {
+  text-align: center;
+  padding: 16px 0 4px;
+}
+
+/* ── Buttons ── */
+.btn {
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  transition: background 0.2s, filter 0.2s;
+}
+
+.btn:hover { background: rgba(255,255,255,0.10); }
+
+.btnRed {
+  background: linear-gradient(180deg, #ff2a2a, #ff1e1e);
+  border: 1px solid rgba(255,50,50,0.35);
+  box-shadow: 0 8px 30px rgba(255,40,40,0.22);
+}
+
+.btnRed:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: 0.40; cursor: not-allowed; filter: none !important; }
+
+.muted { color: rgba(255,255,255,0.55); font-size: 13px; }
+
+/* ══ MODAL ══ */
+.tpModalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.tpModal {
+  width: min(600px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, rgba(18,22,30,0.98), rgba(12,16,24,0.98));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  padding: 26px 24px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  animation: tpModalPop 0.25s cubic-bezier(.22,1.4,.6,1) both;
+}
+
+@keyframes tpModalPop {
+  from { transform: scale(0.92); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.tpModalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.tpModalClose:hover { background: rgba(255,60,60,0.20); }
+
+/* Modal Header */
+.tpModalHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.tpModalAvatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ff2d2d, #ff6b6b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.tpModalName {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.tpModalSpec {
+  font-size: 13px;
+  color: rgba(255,255,255,0.50);
+  margin-bottom: 6px;
+}
+
+.tpModalRating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.tpModalRatingNum {
+  font-size: 13px;
+  color: rgba(255,215,0,0.80);
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.tpModalDivider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin-bottom: 16px;
+}
+
+/* Booking list */
+.tpModalEmpty {
+  text-align: center;
+  padding: 30px;
+  color: rgba(255,255,255,0.40);
+  font-size: 14px;
+}
+
+.tpModalList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.tpModalItem {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.tpModalItemTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.tpModalItemUser {
+  font-weight: 800;
+  color: #fff;
+  font-size: 14px;
+}
+
+.tpModalItemMeta {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 8px;
+}
+
+.tpModalItemRating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.tpStarsNum {
+  font-size: 12px;
+  color: rgba(255,255,255,0.50);
+  margin-left: 4px;
+}
+
+.tpModalReview {
+  font-size: 13px;
+  color: rgba(255,255,255,0.60);
+  font-style: italic;
+  margin-left: 8px;
+}
+
+.tpModalNoRating {
+  font-size: 12px;
+  color: rgba(255,255,255,0.30);
+  font-style: italic;
+}
+
+/* Badges */
+.tpModalBadge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.badgeGreen { background: rgba(40,200,100,0.15); border: 1px solid rgba(40,200,100,0.35); color: #6effa8; }
+.badgeRed   { background: rgba(255,60,60,0.15);  border: 1px solid rgba(255,60,60,0.35);  color: #ff9999; }
+.badgeYellow{ background: rgba(255,200,50,0.15); border: 1px solid rgba(255,200,50,0.35); color: #ffd966; }
+
+.tpModalCloseBtn { width: 100%; margin-top: 4px; }
+
+/* ── Responsive ── */
+@media (max-width: 1000px) { .tpCards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  {
+  .tpCards { grid-template-columns: 1fr; }
+  .tpTop   { flex-direction: column; align-items: flex-start; }
+  .tpTitle { font-size: 26px; }
+}

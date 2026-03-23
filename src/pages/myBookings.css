@@ -1,0 +1,100 @@
+:root{
+  --bg:#070910;
+  --card: rgba(255,255,255,.06);
+  --line: rgba(255,255,255,.12);
+  --text:#fff;
+  --muted: rgba(255,255,255,.70);
+  --red:#ff2d2d;
+}
+
+html, body, #root { height:100%; width:100%; margin:0; }
+
+.mb{
+  min-height:100vh;
+  padding: 24px;
+  color: var(--text);
+  background:
+    radial-gradient(900px 520px at 20% 10%, rgba(255,45,45,.14), transparent 55%),
+    radial-gradient(900px 520px at 85% 20%, rgba(0,140,255,.14), transparent 55%),
+    var(--bg);
+  display:flex;
+  justify-content:center;
+}
+
+.mb-card{
+  width: min(980px, 95vw);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.mb-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.mb-title{ font-weight: 950; font-size: 18px; }
+.mb-sub{ margin-top: 6px; color: var(--muted); font-size: 12px; }
+
+.mb-empty{
+  padding: 18px;
+  text-align:center;
+  color: rgba(255,255,255,.65);
+  border: 1px dashed rgba(255,255,255,.14);
+  border-radius: 14px;
+}
+
+.mb-list{ display:flex; flex-direction:column; gap: 10px; }
+
+.mb-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(0,0,0,.20);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+}
+
+.mb-h{ font-weight: 950; }
+.mb-m{ margin-top: 4px; color: rgba(255,255,255,.75); font-size: 12px; }
+
+.mb-badge{
+  display:inline-flex;
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 950;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.mb-badge.pending{ background: rgba(255,176,32,.10); border-color: rgba(255,176,32,.22); }
+.mb-badge.approved{ background: rgba(0,255,120,.10); border-color: rgba(0,255,120,.22); }
+.mb-badge.rejected{ background: rgba(255,45,45,.10); border-color: rgba(255,45,45,.22); }
+
+.mb-btn{
+  border:none;
+  cursor:pointer;
+  font-weight: 950;
+  border-radius: 14px;
+  padding: 10px 14px;
+  transition: .2s;
+  color:#fff;
+}
+
+.mb-btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+
+.mb-btn-ghost{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+}
+.mb-btn-danger{
+  background: rgba(255,45,45,.12);
+  border: 1px solid rgba(255,45,45,.35);
+}

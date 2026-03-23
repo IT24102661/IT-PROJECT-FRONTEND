@@ -1,0 +1,267 @@
+/* ═══════════════════════════════════════
+   MARK ATTENDANCE — Royal Fitness
+═══════════════════════════════════════ */
+
+* { box-sizing: border-box; }
+
+.maWrap {
+  min-height: 100vh;
+  background: radial-gradient(900px 420px at 20% 10%, rgba(255,40,40,0.35), transparent 60%),
+              radial-gradient(900px 520px at 80% 30%, rgba(0,153,255,0.22), transparent 60%),
+              linear-gradient(180deg, #07090f, #06070c);
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #e9eef7;
+}
+
+.maContainer {
+  width: min(560px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* Header */
+.maHeader  { text-align: center; }
+.maBrand   { font-size: 20px; font-weight: 900; margin-bottom: 12px; cursor: pointer; }
+.maRed     { color: #ff2d2d; }
+.maWhite   { color: #fff; }
+.maTitle   { font-size: 30px; font-weight: 900; color: #fff; margin: 0 0 8px; }
+.maSub     { color: rgba(255,255,255,0.45); font-size: 13px; margin: 0; }
+
+/* Card */
+.maCard {
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.maCardIcon  { font-size: 48px; margin-bottom: 4px; }
+.maCardTitle { font-size: 20px; font-weight: 900; color: #fff; }
+.maCardSub   { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+
+/* Search Form */
+.maSearchForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+/* Field */
+.maField {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  text-align: left;
+}
+
+.maField > span {
+  color: rgba(255,255,255,0.70);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.maInput {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.30);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.maInputLarge {
+  height: 56px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.maInput:focus {
+  border-color: rgba(0,140,255,0.55);
+  box-shadow: 0 0 0 4px rgba(0,140,255,0.12);
+}
+
+.maInput::placeholder { color: rgba(255,255,255,0.22); font-size: 14px; letter-spacing: 0; }
+.maInputErr { border-color: rgba(255,60,60,0.70) !important; }
+.maErr      { color: #ff6b6b; font-size: 12px; font-weight: 600; text-align: left; }
+
+/* Info Box */
+.maInfoBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(0,140,255,0.08);
+  border: 1px solid rgba(0,140,255,0.20);
+  color: rgba(255,255,255,0.60);
+  font-size: 13px;
+  width: 100%;
+  text-align: left;
+}
+
+.maLink { color: #4db8ff; cursor: pointer; font-weight: 700; }
+.maLink:hover { text-decoration: underline; }
+
+/* Member Card */
+.maMemberCard {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.maMemberAvatar {
+  width: 50px; height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff2d2d, #ff6b6b);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 900; color: #fff;
+  flex-shrink: 0;
+}
+
+.maMemberInfo  { flex: 1; }
+.maMemberName  { font-size: 17px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+.maMemberMeta  { font-size: 12px; color: rgba(255,255,255,0.45); display: flex; gap: 6px; flex-wrap: wrap; }
+
+.maBackBtn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.50);
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.maBackBtn:hover { background: rgba(255,60,60,0.15); color: #ff9999; }
+
+/* Messages */
+.maMsg {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.maMsgOk   { background: rgba(40,200,100,0.10); border: 1px solid rgba(40,200,100,0.30); color: #6effa8; }
+.maMsgWarn { background: rgba(255,200,50,0.10);  border: 1px solid rgba(255,200,50,0.30);  color: #ffd966; }
+.maMsgErr  { background: rgba(255,60,60,0.10);   border: 1px solid rgba(255,60,60,0.30);   color: #ff9999; }
+
+/* Mark Buttons */
+.maMarkBtns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.maMarkBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 16px;
+  border-radius: 20px;
+  border: 2px solid;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, filter .2s;
+  background: transparent;
+}
+
+.maMarkBtn:hover   { transform: translateY(-4px); }
+.maMarkBtn:disabled{ opacity: 0.55; cursor: not-allowed; transform: none; }
+
+.maMarkPresent {
+  border-color: rgba(40,200,100,0.50);
+  background: rgba(40,200,100,0.08);
+}
+
+.maMarkPresent:hover {
+  background: rgba(40,200,100,0.16);
+  box-shadow: 0 12px 40px rgba(40,200,100,0.25);
+}
+
+.maMarkAbsent {
+  border-color: rgba(255,60,60,0.50);
+  background: rgba(255,60,60,0.08);
+}
+
+.maMarkAbsent:hover {
+  background: rgba(255,60,60,0.16);
+  box-shadow: 0 12px 40px rgba(255,60,60,0.25);
+}
+
+.maMarkIcon  { font-size: 42px; }
+.maMarkLabel { font-size: 20px; font-weight: 900; color: #fff; }
+.maMarkDesc  { font-size: 13px; color: rgba(255,255,255,0.45); }
+
+/* Already Marked */
+.maAlreadyCard { gap: 14px; }
+.maAlreadyIcon  { font-size: 64px; }
+.maAlreadyTitle { font-size: 22px; font-weight: 900; color: #fff; }
+.maAlreadyStatus{ font-size: 16px; color: rgba(255,255,255,0.65); }
+.maAlreadyDate  { font-size: 14px; color: rgba(255,255,255,0.40); }
+.maAlreadyActions{ display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+
+/* Buttons */
+.maBtn {
+  height: 48px; padding: 0 24px;
+  border-radius: 50px; border: none;
+  font-size: 15px; font-weight: 800;
+  cursor: pointer;
+  transition: filter .2s, transform .2s;
+}
+
+.maBtn:hover    { filter: brightness(1.08); transform: translateY(-1px); }
+.maBtn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; filter: none; }
+.maBtnBlue      { background: linear-gradient(135deg, #0088ff, #0066cc); color: #fff; box-shadow: 0 6px 24px rgba(0,136,255,0.30); width: 100%; }
+.maBtnRed       { background: linear-gradient(135deg, #ff2d2d, #ff5555); color: #fff; box-shadow: 0 6px 24px rgba(255,45,45,0.30); }
+.maBtnGhost     { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; }
+
+/* Home button */
+.maHomeBtn {
+  align-self: center;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.45);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+
+.maHomeBtn:hover { color: #fff; border-color: rgba(255,255,255,0.30); }
+
+/* Responsive */
+@media (max-width: 480px) {
+  .maMarkBtns { grid-template-columns: 1fr; }
+  .maTitle    { font-size: 24px; }
+}
